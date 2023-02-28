@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class CardComponent extends StatefulWidget {
   final name,date,number,altura,largura;
+  
   const CardComponent({super.key,required this.name,this.date,this.number,this.altura,this.largura});
 
   @override
@@ -16,6 +17,10 @@ class _CardState extends State<CardComponent> {
   @override
   Widget build(BuildContext context) {
     return 
+      Transform(
+        transform: Matrix4.rotationY(3),
+        alignment: Alignment.center,
+        child:
         Container(
             width: widget.largura.toDouble(),
             height: widget.altura.toDouble(),
@@ -42,8 +47,9 @@ class _CardState extends State<CardComponent> {
                     Text(widget.date,style:TextStyle(color: Colors.white))
                   ],
                 ),
+
                 
               ],
-            )
+            ))
         );}
 }

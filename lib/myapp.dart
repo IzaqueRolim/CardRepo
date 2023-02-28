@@ -6,7 +6,7 @@ import 'register_card.dart';
 import 'card.dart';
 
 
-  List<Cartao> cards = [Cartao(nameUser: "The Paris Credit", date: "02/10", numberCard: "12345678920", cvc: "132")];
+  final List<Cartao> cards = [Cartao(nameUser: "The Paris Credit", date: "02/10", numberCard: "12345678920", cvc: "132")];
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -36,6 +36,7 @@ class MyButton extends StatefulWidget {
 
 class _MyButtonState extends State<MyButton> {
   acionar() {
+    cards.add(widget.card);
     Navigator.push(
       context,
       MaterialPageRoute(builder:(_)=>ListPage(cards: cards)),
@@ -47,9 +48,10 @@ class _MyButtonState extends State<MyButton> {
         child: Text("Salvar"),
         onPressed: (){
           setState((){
+            acionar();
             
-            Navigator.of(context).pop(cards);
           });
+         
         },
     );
   }

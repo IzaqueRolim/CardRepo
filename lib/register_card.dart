@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:myfirstapp/card.dart';
 import 'myapp.dart';
 import 'card_component.dart';
@@ -30,6 +32,11 @@ class _RegisterCardState extends State<RegisterCard> {
                 height: 60,
                 child:
                   TextField(
+                    inputFormatters: [
+                      MaskedInputFormatter("#### #### #### ####",allowedCharMatcher: RegExp(r'[0-9]')),
+                     // FilteringTextInputFormatter.digitsOnly,
+                      // LengthLimitingTextInputFormatter(16)
+                    ],
                     decoration: InputDecoration(
                       hintText: "0000 0000 0000 0000",
                       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
@@ -47,12 +54,15 @@ class _RegisterCardState extends State<RegisterCard> {
                 child:
                   TextField(
                     decoration: InputDecoration(
-                      hintText: "Your name",
+                      hintText: name, 
                       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
                     keyboardType: TextInputType.name,
+                    textCapitalization: TextCapitalization.words,
                     onChanged: (value) => {
                         setState((){
-                          name=value;
+                          
+                           name=value;
+                          
                         })
                     })
               ),
@@ -64,8 +74,11 @@ class _RegisterCardState extends State<RegisterCard> {
                       height: 60,
                       child:
                         TextField(
+                          inputFormatters: [  
+                            MaskedInputFormatter("##/##",allowedCharMatcher: RegExp(r'[0-9]'))
+                          ],
                           decoration: InputDecoration(
-                          hintText: "02/10",
+                          hintText: "00/00",
                           border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
                         keyboardType: TextInputType.datetime,
                         onChanged:(value){
@@ -79,8 +92,13 @@ class _RegisterCardState extends State<RegisterCard> {
                       height: 60,
                       child:
                         TextField(
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(3)
+                          ],
                           decoration: InputDecoration(
                           hintText: "CVC",
+                          labelText: "",
                           border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
                         keyboardType: TextInputType.number,
                         onChanged:(value){
@@ -107,7 +125,18 @@ class _RegisterCardState extends State<RegisterCard> {
                 }
               },
               child:Text(name,style:TextStyle(backgroundColor: Colors.blue))),
-             MyButton(card: Cartao(nameUser: name, date: date, numberCard: number, cvc: cvc))    
+             MyButton(card: Cartao(nameUser: name, date: date, numberCard: number, cvc: cvc)),
+             Transform(
+                transform: Matrix4.rotationY(10),
+                alignment: Alignment.center,
+                child: Container(
+                  color: Colors.purpleAccent,
+                  child: Text("Teste"),
+                  width: 200,
+                  height: 200,
+                ),
+            )
+
       ]
       ));
   }
