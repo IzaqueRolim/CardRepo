@@ -47,7 +47,7 @@ class _ListPageState extends State<ListPage> {
                       mostrarDetalhes(widget.cards[i]);
                     });
                   },
-                  child: CardComponent(name: widget.cards[i].nameUser,date:widget.cards[i].date,number: widget.cards[i].numberCard,altura:220,largura:380),
+                  child: CardComponent(name: widget.cards[i].nameUser,date:widget.cards[i].date,number: widget.cards[i].numberCard,cvc:widget.cards[i].cvc,altura:220,largura:380,cor: widget.cards[i].cor,),
                 )
               ],
            )),

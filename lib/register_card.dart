@@ -8,7 +8,7 @@ import 'myapp.dart';
 import 'card_component.dart';
 
 class RegisterCard extends StatefulWidget {
-  const RegisterCard({super.key});
+  const RegisterCard({super.key });
 
   @override
   State<RegisterCard> createState() => _RegisterCardState();
@@ -17,6 +17,7 @@ class RegisterCard extends StatefulWidget {
 class _RegisterCardState extends State<RegisterCard> {
 
   var name = "Your Name",number="0000 0000 0000 0000",cvc="000",date="00/00";
+  late Color cor = Colors.black;
   
 
   @override
@@ -26,7 +27,7 @@ class _RegisterCardState extends State<RegisterCard> {
       body: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CardComponent(name: name,date: date,number: number,altura: 200,largura: 340,),
+                CardComponent(name: name,date: date,number: number,cvc:cvc,altura: 200,largura: 340,cor:this.cor),
                SizedBox(
                 width: 340,
                 height: 60,
@@ -39,7 +40,7 @@ class _RegisterCardState extends State<RegisterCard> {
                     ],
                     decoration: InputDecoration(
                       hintText: "0000 0000 0000 0000",
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5)))),
                     keyboardType: TextInputType.number,
                     onChanged: (value){
                       setState(() {
@@ -55,7 +56,7 @@ class _RegisterCardState extends State<RegisterCard> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: name, 
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5)))),
                     keyboardType: TextInputType.name,
                     textCapitalization: TextCapitalization.words,
                     onChanged: (value) => {
@@ -79,7 +80,7 @@ class _RegisterCardState extends State<RegisterCard> {
                           ],
                           decoration: InputDecoration(
                           hintText: "00/00",
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5)))),
                         keyboardType: TextInputType.datetime,
                         onChanged:(value){
                           setState((){
@@ -99,7 +100,7 @@ class _RegisterCardState extends State<RegisterCard> {
                           decoration: InputDecoration(
                           hintText: "CVC",
                           labelText: "",
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5)))),
                         keyboardType: TextInputType.number,
                         onChanged:(value){
                           setState(() {
@@ -110,33 +111,29 @@ class _RegisterCardState extends State<RegisterCard> {
                   )
                 ],
               ),
-              GestureDetector(onPanUpdate: (details) {
-                
-                if (details.delta.dx > 0) {
-                  setState((){
-                    name = "Raquel";
-                  });
-                }
-                
-                if (details.delta.dx < 0) {
-                  setState((){
-                    name = "Izaque";
-                  });
-                }
-              },
-              child:Text(name,style:TextStyle(backgroundColor: Colors.blue))),
-             MyButton(card: Cartao(nameUser: name, date: date, numberCard: number, cvc: cvc)),
-             Transform(
-                transform: Matrix4.rotationY(10),
-                alignment: Alignment.center,
-                child: Container(
-                  color: Colors.purpleAccent,
-                  child: Text("Teste"),
-                  width: 200,
-                  height: 200,
-                ),
-            )
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  GestureDetector(
+                    onTap: (){setState((){cor = Colors.blue;});},
+                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  ),
+                  GestureDetector(
+                    onTap: (){setState((){cor = Colors.green;});},
+                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  ),
+                  GestureDetector(
+                    onTap: (){setState((){cor = Colors.red;});},
+                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  ),
+                  GestureDetector(
+                    onTap: (){setState((){cor = Colors.purple;});},
+                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.purple,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  ),
+                 ],),
+             MyButton(card: Cartao(nameUser: name, date: date, numberCard: number, cvc: cvc,cor: this.cor))
       ]
       ));
   }

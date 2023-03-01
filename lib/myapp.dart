@@ -6,7 +6,7 @@ import 'register_card.dart';
 import 'card.dart';
 
 
-  final List<Cartao> cards = [Cartao(nameUser: "The Paris Credit", date: "02/10", numberCard: "12345678920", cvc: "132")];
+  final List<Cartao> cards = [Cartao(nameUser: "The Paris Credit", date: "02/10", numberCard: "12345678920", cvc: "132",cor:Colors.black)];
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
