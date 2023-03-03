@@ -44,16 +44,19 @@ class _MyButtonState extends State<MyButton> {
   }
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
-        child: Text("Salvar"),
-        onPressed: (){
-          setState((){
-            acionar();
-            
-          });
-         
-        },
-    );
+    return 
+      Container(
+        margin: EdgeInsets.only(top:10),
+        child: 
+        FilledButton(
+          style: ButtonStyle(),
+          child: Text("Salvar"),
+          onPressed: (){
+            setState((){
+              acionar();
+            });
+          },
+      ));
   }
 }
 

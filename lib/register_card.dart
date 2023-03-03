@@ -24,7 +24,12 @@ class _RegisterCardState extends State<RegisterCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Crie seu cartao"),centerTitle: true,),
-      body: Column(
+      body: 
+        SingleChildScrollView(
+          
+          child: 
+          Column(
+
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CardComponent(name: name,date: date,number: number,cvc:cvc,altura: 200,largura: 340,cor:this.cor),
@@ -49,9 +54,10 @@ class _RegisterCardState extends State<RegisterCard> {
                     },
                     )
               ),
-              SizedBox(
+              Container(
                 width: 340,
                 height: 60,
+                margin: EdgeInsets.all(10),
                 child:
                   TextField(
                     decoration: InputDecoration(
@@ -68,10 +74,10 @@ class _RegisterCardState extends State<RegisterCard> {
                     })
               ),
                Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox(
-                      width: 170,
+                      width: 150,
                       height: 60,
                       child:
                         TextField(
@@ -89,7 +95,7 @@ class _RegisterCardState extends State<RegisterCard> {
                         })
                   ),
                   SizedBox(
-                      width: 170,
+                      width: 150,
                       height: 60,
                       child:
                         TextField(
@@ -98,8 +104,7 @@ class _RegisterCardState extends State<RegisterCard> {
                             LengthLimitingTextInputFormatter(3)
                           ],
                           decoration: InputDecoration(
-                          hintText: "CVC",
-                          labelText: "",
+                          hintText: "000",
                           border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(5)))),
                         keyboardType: TextInputType.number,
                         onChanged:(value){
@@ -117,24 +122,32 @@ class _RegisterCardState extends State<RegisterCard> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   GestureDetector(
-                    onTap: (){setState((){cor = Colors.blue;});},
-                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                    onTap: (){setState((){cor = Color(0xFF26973D);});},
+                    child: Container(height: 40,width: 40,margin: EdgeInsets.only(left: 5,right: 5,top: 15),decoration: BoxDecoration(color: Color(0xFF26973D),borderRadius: BorderRadius.all(Radius.circular(15)))),
                   ),
                   GestureDetector(
-                    onTap: (){setState((){cor = Colors.green;});},
-                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                    onTap: (){setState((){cor = Color(0xFF01BDEA);});},
+                    child: Container(height: 40,width: 40,margin: EdgeInsets.only(left: 5,right: 5,top: 15),decoration: BoxDecoration(color: Color(0xFF01BDEA),borderRadius: BorderRadius.all(Radius.circular(15)))),
                   ),
                   GestureDetector(
-                    onTap: (){setState((){cor = Colors.red;});},
-                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                    onTap: (){setState((){cor = Color(0xFFA513BEE);});},
+                    child: Container(height: 40,width: 40,margin: EdgeInsets.only(left: 5,right: 5,top: 15),decoration: BoxDecoration(color: Color(0xFFA513BEE),borderRadius: BorderRadius.all(Radius.circular(15)))),
                   ),
                   GestureDetector(
-                    onTap: (){setState((){cor = Colors.purple;});},
-                    child: Container(height: 30,width: 30,margin: EdgeInsets.only(left: 5,right: 5),decoration: BoxDecoration(color: Colors.purple,borderRadius: BorderRadius.all(Radius.circular(15)))),
+                    onTap: (){setState((){cor = Color(0xFFED1578);});},
+                    child: Container(height: 40,width: 40,margin: EdgeInsets.only(left: 5,right: 5,top: 15),decoration: BoxDecoration(color: Color(0xFFED1578),borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  ),
+                  GestureDetector(
+                    onTap: (){setState((){cor = Color(0xFFFF4E00);});},
+                    child: Container(height: 40,width: 40,margin: EdgeInsets.only(left: 5,right: 5,top: 15),decoration: BoxDecoration(color: Color(0xFFFF4E00),borderRadius: BorderRadius.all(Radius.circular(15)))),
+                  ),
+                  GestureDetector(
+                    onTap: (){setState((){cor = Color(0xFF1B201E0);});},
+                    child: Container(height: 40,width: 40,margin: EdgeInsets.only(left: 5,right: 5,top: 15),decoration: BoxDecoration(color: Color(0xFF1B201E0),borderRadius: BorderRadius.all(Radius.circular(15)))),
                   ),
                  ],),
              MyButton(card: Cartao(nameUser: name, date: date, numberCard: number, cvc: cvc,cor: this.cor))
       ]
-      ));
+      )));
   }
 }

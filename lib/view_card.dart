@@ -19,7 +19,7 @@ class _ViewCardState extends State<ViewCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.card.nameUser),centerTitle: true),
-      body: CardComponent(name: widget.card.nameUser,date: widget.card.date,number: widget.card.numberCard,altura: 250,largura: 440,)
+      body: CardComponent(name: widget.card.nameUser,date: widget.card.date,number: widget.card.numberCard,altura: 230,largura: 440,cvc: widget.card.cvc,cor: widget.card.cor,)
     );
   }
 }

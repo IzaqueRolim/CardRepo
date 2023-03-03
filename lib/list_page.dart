@@ -42,7 +42,7 @@ class _ListPageState extends State<ListPage> {
             children: [
               for(var i = 0; i <widget.cards.length; i++)
                 GestureDetector(
-                  onTap: (){
+                  onLongPress: (){
                     setState(() {
                       mostrarDetalhes(widget.cards[i]);
                     });
